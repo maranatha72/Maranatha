@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maranatha Slider</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .slider {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      height: 500px;
+    }
+    .slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: fade 1s;
+    }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    @keyframes fade {
+      from {opacity: .4} 
+      to {opacity: 1}
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+  <div class="slider">
+    <div class="slide">
+      <img src="https://source.unsplash.com/1600x500/?hotel,uniform" alt="Slide 1">
+    </div>
+    <div class="slide">
+      <img src="https://source.unsplash.com/1600x500/?luxury,clothes" alt="Slide 2">
+    </div>
+    <div class="slide">
+      <img src="https://source.unsplash.com/1600x500/?fashion,hotel" alt="Slide 3">
+    </div>
+  </div>
+
+  <script>
+    let slideIndex = 0;
+    showSlides();
+    function showSlides() {
+      let slides = document.getElementsByClassName("slide");
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {slideIndex = 1}    
+      slides[slideIndex-1].style.display = "block";  
+      setTimeout(showSlides, 3000); // Change image every 3 seconds
+    }
+  </script>
+
+</body>
+</html>
